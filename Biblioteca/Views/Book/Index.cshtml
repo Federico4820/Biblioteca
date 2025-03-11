@@ -24,7 +24,7 @@
                             <h5 class="card-title">@book.Title</h5>
                             <p class="card-text">@book.Author</p>
                             <p class="card-text text-muted">@book.genre</p>
-                            <a href="@Url.Action("Details", "Books", new { id = book.Id })" class="btn btn-warning">View Details</a>
+                            <a asp-controller="Book" asp-action="Info" asp-route-id="@book.Id" class="btn btn-warning">View info</a>
                         </div>
                     </div>
                 </div>

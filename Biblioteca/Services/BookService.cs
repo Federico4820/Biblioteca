@@ -58,5 +58,25 @@ namespace Biblioteca.Services
             _context.books.Add(book);
             return await SaveAsync();
         }
+
+        public async Task<BookInfoViewModel> GetBookByIdAsync(Guid Id)
+        {
+            var book = await _context.books.FindAsync(Id);
+
+            if (book == null)
+            {
+                return new BookInfoViewModel();
+            }
+
+            var info = new BookInfoViewModel()
+            {
+                Title=book.Title,
+                Author=book.Author,
+                genre=book.genre,
+                availability=book.availability,
+                CoverUrl=book.CoverUrl
+            };
+            return info;
+        }
     }
 }

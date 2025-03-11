@@ -1,0 +1,16 @@
+﻿@model BookInfoViewModel
+
+@{
+	ViewData["Title"] = "Info book";
+}
+
+<div class="container mt-4">
+    <h2>@Model.Title</h2>
+    @if (!string.IsNullOrEmpty(Model.CoverUrl))
+    {
+        <img src="@Model.CoverUrl" alt="@Model.Title" class="img-fluid mb-3" style="max-height: 300px;">
+    }
+    <p><strong>Author:</strong> @Model.Author</p>
+    <p><strong>Genre:</strong> @Model.genre</p>
+    <p><strong>Availability:</strong> @(Model.availability == AvailabilityStatus.InStock ? "In Stock" : "Out of Stock")</p>
+</div>

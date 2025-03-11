@@ -37,5 +37,19 @@ namespace Biblioteca.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [Route("product/Info/{Id:guid}")]
+        public async Task<IActionResult> Info(Guid Id)
+        {
+            var Info = await _bookService.GetBookByIdAsync(Id);
+
+            if (Info.Title == null)
+            {
+                TempData["Error"] = "Error finding info on database";
+                return RedirectToAction("Index"); 
+            }
+
+            return View(Info);
+        }
     }
 }
