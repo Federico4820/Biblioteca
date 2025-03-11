@@ -1,18 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
+﻿using Biblioteca.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Biblioteca.Models
+namespace Biblioteca.ViewModels
 {
-    public enum AvailabilityStatus
+    public class AddBookViewModel
     {
-        InStock = 0,
-        OutOfStock = 1
-    }
-    public class Book
-    {
-        [Key]
-        public Guid Id { get; set; }
-
         [Required]
         [StringLength(50)]
         public required string Title { get; set; }

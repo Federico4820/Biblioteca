@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Biblioteca.Models;
+using Biblioteca.ViewModels;
 
 namespace Biblioteca.Controllers;
 

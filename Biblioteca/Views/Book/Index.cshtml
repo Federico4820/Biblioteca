@@ -1,0 +1,38 @@
+﻿@model BooksListViewModel
+
+@{
+    ViewData["Title"] = "All Books";
+}
+@if(TempData["Error"] != null)
+{
+    <p class="text-danger">@TempData["Error"]</p>
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">All Books</h2>
+    <a class="btn btn-primary mb-3" asp-controller="Book" asp-action="Add">New Book</a>
+
+    @if (Model.Books != null && Model.Books.Any())
+    {
+        <div class="row">
+            @foreach (var book in Model.Books)
+            {
+                <div class="col-md-4 col-sm-6 col-lg-3 col-xl-3">
+                    <div class="card mb-4 shadow-sm" style="max-width:250px"> 
+                        <img src="@book.CoverUrl" class="card-img-top" alt="@book.Title" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@book.Title</h5>
+                            <p class="card-text">@book.Author</p>
+                            <p class="card-text text-muted">@book.genre</p>
+                            <a href="@Url.Action("Details", "Books", new { id = book.Id })" class="btn btn-warning">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-danger">No Books found</p>
+    }
+</div>
