@@ -21,3 +21,15 @@ body {
   margin-bottom: 60px;
   background-color: tan;
 }
+
+.card-title, .card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

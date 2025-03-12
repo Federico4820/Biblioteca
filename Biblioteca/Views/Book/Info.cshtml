@@ -13,4 +13,6 @@
     <p><strong>Author:</strong> @Model.Author</p>
     <p><strong>Genre:</strong> @Model.genre</p>
     <p><strong>Availability:</strong> @(Model.availability == AvailabilityStatus.InStock ? "In Stock" : "Out of Stock")</p>
+    <a asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    <a asp-controller="Book" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
 </div>

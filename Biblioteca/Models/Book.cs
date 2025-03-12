@@ -18,11 +18,11 @@ namespace Biblioteca.Models
         public required string Title { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         public required string Author { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(100)]
         public required string genre { get; set; }
 
         [Required]

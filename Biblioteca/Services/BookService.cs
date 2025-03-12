@@ -70,6 +70,7 @@ namespace Biblioteca.Services
 
             var info = new BookInfoViewModel()
             {
+                Id = book.Id,
                 Title=book.Title,
                 Author=book.Author,
                 genre=book.genre,
@@ -77,6 +78,35 @@ namespace Biblioteca.Services
                 CoverUrl=book.CoverUrl
             };
             return info;
+        }
+
+        public async Task<bool> DeleteBookByIdAsync(Guid Id)
+        {
+            var book = await _context.books.FindAsync(Id);
+            if (book == null)
+            {
+                return false;
+            }
+            _context.books.Remove(book);
+            return await SaveAsync();
+        }
+
+        public async Task<bool> UpdateBookAsync(BookInfoViewModel bookInfoViewModel)
+        {
+            var book = await _context.books.FindAsync(bookInfoViewModel.Id);
+            if (book == null)
+            {
+                return false;
+            }
+
+            book.Id = bookInfoViewModel.Id;
+            book.Title = bookInfoViewModel.Title;
+            book.Author = bookInfoViewModel.Author;
+            book.genre = bookInfoViewModel.genre;
+            book.availability = bookInfoViewModel.availability;
+            book.CoverUrl = bookInfoViewModel.CoverUrl;
+            _context.books.Update(book);
+            return await SaveAsync();
         }
     }
 }
